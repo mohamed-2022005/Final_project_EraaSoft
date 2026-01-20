@@ -27,10 +27,7 @@ const Checkout = () => {
 
     // --- Payment Confirmation Logic ---
     useEffect(() => {
-        if (!token) {
-            navigate('/login');
-            return;
-        }
+        // تم حذف التحقق من التوكن هنا عشان الصفحة تفتح عادي من غير ما توديك لوجن
 
         const params = new URLSearchParams(location.search);
         const paymentStatus = params.get('payment_status');
