@@ -11,7 +11,7 @@ import CheckOutPage from './pages/CheckOutPage/CheckOutPage';
 import MyOrderPage from './pages/MyOrderPage/MyOrderPage';
 
 function App() {
-  // بنشيك لو المستخدم مسجل عشان لو حاول يروح للوجن وهو مسجل نرجعه للهوم
+  // Check if user is authenticated
   const token = localStorage.getItem('token') || localStorage.getItem('authToken');
 
   return (
@@ -22,24 +22,23 @@ function App() {
         <Route path='/about' element={<AboutPage />} />
         <Route path='/menu' element={<MenuPage />} />
 
-        {/* لو هو مسجل فعلا وحاول يفتح اللوجن، ابعته للهوم */}
+        {/* Redirect to Home if already logged in */}
         <Route path='/login' element={token ? <Navigate to="/" /> : <HomePage />} />
         <Route path='/signup' element={<SignUpPage />} />
 
-
-        {/* المسارات المحمية */}
+        {/* Protected Routes */}
         <Route path='/cart' element={
           <PrivateRoute>
             <CartPage />
           </PrivateRoute>
         } />
         
-        {/* تم إزالة الحماية من هنا كما طلبت */}
+        {/* Public Checkout Route */}
         <Route path='/checkout' element={<CheckOutPage />} />
 
         <Route path='/myorder' element={<MyOrderPage />} />
 
-        {/* مسار احتياطي لو كتب لينك غلط */}
+        {/* Fallback route for undefined paths */}
         <Route path='*' element={<Navigate to="/" />} />
       </Routes>
     </div>

@@ -164,7 +164,7 @@ function LoginPage({ onLoginSuccess, onClose }) {
               </span>
             </label>
           </div>
-
+          
           {/* Submit */}
           <button
             type="submit"
