@@ -114,7 +114,7 @@ function About() {
                                                 <Icon className='w-8 h-8 text-amber-500/90' />
                                             </motion.div>
 
-                                            <div className='text-4xl font-bold mb-1 bg-clip-text text-transparent bg-gradient-to-r from-amber-200 to-amber-400'>
+                                            <div className='text-4xl font-bold mb-1 bg-clip-text text-transparent bg-linear-to-r from-amber-200 to-amber-400'>
                                                 {s.number}
                                             </div>
 

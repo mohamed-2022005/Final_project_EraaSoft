@@ -23,7 +23,6 @@
     "react-toastify": "^11.0.5",
     "stripe": "^20.2.0",
     "tailwindcss": "^4.1.18",
-    "yap": "^0.0.2",
     "yup": "^1.7.1"
   },
   "devDependencies": {

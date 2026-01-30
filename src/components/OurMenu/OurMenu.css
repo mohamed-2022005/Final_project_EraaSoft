@@ -12,11 +12,11 @@
 @keyframes cardEntrance {
     0% {
         opacity: 0;
-        transform: translateY(60px) scale(0.95); /* خلي الحركة أكبر شويه */
+        transform: translateY(60px) scale(0.95); 
     }
     60% {
         opacity: 1;
-        transform: translateY(-15px) scale(1.03); /* شوية دفع للأعلى */
+        transform: translateY(-15px) scale(1.03); 
     }
     100% {
         opacity: 1;
@@ -26,6 +26,6 @@
 
 .card-animate {
     opacity: 0;
-    animation: cardEntrance 1.2s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; /* مدة أطول = أبطأ */
-    animation-delay: calc(var(--index) * 0.15s); /* فرق زمني أكبر بين كل كارت */
+    animation: cardEntrance 1.2s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; 
+    animation-delay: calc(var(--index) * 0.15s); 
 }

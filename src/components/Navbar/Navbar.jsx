@@ -145,7 +145,7 @@ function Navbar() {
               
               <button
                 onClick={isAuthenticated ? handleLogout : () => { setShowLoginModal(true); setIsOpen(false); }}
-                className="flex-[2] py-3 bg-amber-500 text-[#2d1b0e] rounded-xl font-bold flex items-center justify-center gap-2"
+                className="flex-2 py-3 bg-amber-500 text-[#2d1b0e] rounded-xl font-bold flex items-center justify-center gap-2"
               >
                 {isAuthenticated ? <><FiLogOut /> Logout</> : <><FiKey /> Login</>}
               </button>
@@ -156,7 +156,7 @@ function Navbar() {
 
       {/* Login Modal */}
       {showLoginModal && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[100] p-4" onClick={() => setShowLoginModal(false)}>
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-100 p-4" onClick={() => setShowLoginModal(false)}>
           <div className="bg-[#2D1B0E] rounded-2xl p-6 w-full max-w-xl relative border border-amber-600/30 shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <button
               className="absolute top-4 right-4 text-amber-400 hover:text-amber-300 transition"

@@ -60,7 +60,7 @@ const MyOrder = () => {
     );
 
     return (
-        <div className='min-h-screen bg-gradient-to-br from-[#1a120b] via-[#2a1e14] to-[#3e2b1d] py-12 px-4'>
+        <div className='min-h-screen bg-linear-to-br from-[#1a120b] via-[#2a1e14] to-[#3e2b1d] py-12 px-4'>
             <div className='max-w-7xl mx-auto'>
                 
                 {/* Top Navigation */}
@@ -73,7 +73,7 @@ const MyOrder = () => {
 
                 {/* Orders Container */}
                 <div className='bg-[#4b3b3b]/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border-2 border-amber-500/20'>
-                    <h2 className='text-3xl font-bold mb-8 text-center bg-gradient-to-r from-amber-300 to-amber-500 bg-clip-text text-transparent'>Order History</h2>
+                    <h2 className='text-3xl font-bold mb-8 text-center bg-linear-to-r from-amber-300 to-amber-500 bg-clip-text text-transparent'>Order History</h2>
 
                     <div className='overflow-x-auto'>
                         <table className='w-full text-left'>

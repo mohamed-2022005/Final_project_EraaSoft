@@ -59,6 +59,7 @@ export const stats = [
         icon: GiFoodTruck,
         gradient: 'from-amber-500 via-orange-400 to-yellow-600',
     },
+    
     {
         number: '98%',
         label: 'Satisfaction',

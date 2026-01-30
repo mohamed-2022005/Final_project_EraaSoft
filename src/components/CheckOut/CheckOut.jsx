@@ -104,7 +104,7 @@ const Checkout = () => {
     };
 
     return (
-        <div className='min-h-screen bg-gradient-to-b from-[#1a1212] to-[#2a1e1e] text-white py-16 px-4'>
+        <div className='min-h-screen bg-linear-to-b from-[#1a1212] to-[#2a1e1e] text-white py-16 px-4'>
             <div className='mx-auto max-w-4xl'>
                 <Link className='flex items-center gap-2 text-amber-400 mb-8' to='/cart'>
                     <FaArrowLeft /> Back to Cart
@@ -153,7 +153,7 @@ const Checkout = () => {
 
                         {error && <p className='text-red-400 mt-2 font-bold bg-red-900/20 p-2 rounded'>{error}</p>}
 
-                        <button type='submit' disabled={loading} className='w-full bg-gradient-to-r from-red-600 to-amber-600 py-4 rounded-xl font-bold flex justify-center items-center hover:scale-[1.02] transition-transform'>
+                        <button type='submit' disabled={loading} className='w-full bg-linear-to-r from-red-600 to-amber-600 py-4 rounded-xl font-bold flex justify-center items-center hover:scale-[1.02] transition-transform'>
                             <FaLock className='mr-2' /> {loading ? 'Processing...' : 'Complete Order'}
                         </button>
                     </div>

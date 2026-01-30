@@ -5,7 +5,7 @@ import { FaMinus, FaPlus } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
 import './OurMenu.css'
 
-function OurMenu() {
+function                            OurMenu() {
     const location = useLocation();
     const categories = ['Breakfast', 'Lunch', 'Dinner', 'Mexican', 'Italian', 'Desserts', 'Drinks'];
 

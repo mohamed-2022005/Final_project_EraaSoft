@@ -48,7 +48,7 @@ function Banner() {
                     backdropFilter: 'blur(6px)',
                     border: '1px solid rgba(245, 158, 11, 0.35)',
 
-                    // 👇 مارجن للموبايل بس
+                    
                     marginTop: window.innerWidth < 768 ? '20px' : '0px',
                 },
 

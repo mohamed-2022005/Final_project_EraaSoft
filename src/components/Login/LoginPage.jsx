@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import * as Yup from 'yup'; // Import Yup
 import {
   FaArrowRight,
   FaCheckCircle,
@@ -23,6 +24,12 @@ function LoginPage({ onLoginSuccess, onClose }) {
     rememberMe: false
   });
 
+  // --- Validation Schema ---
+  const loginSchema = Yup.object().shape({
+    email: Yup.string().email('Invalid email format').required('Email is required'),
+    password: Yup.string().required('Password is required'),
+  });
+
   useEffect(() => {
     const stored = localStorage.getItem('loginData');
     if (stored) {
@@ -36,33 +43,45 @@ function LoginPage({ onLoginSuccess, onClose }) {
     }
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    const user = users.find(u => u.email === formData.email && u.password === formData.password);
+    try {
+      // abortEarly: false makes Yup collect ALL errors
+      await loginSchema.validate(formData, { abortEarly: false });
 
-    if (!user) {
-      setIsError(true);
-      setToastMessage('No account found! Please sign up first.');
+      const users = JSON.parse(localStorage.getItem('users') || '[]');
+      const user = users.find(u => u.email === formData.email && u.password === formData.password);
+
+      if (!user) {
+        setIsError(true);
+        setToastMessage('No account found! Please sign up first.');
+        setShowToast(true);
+        setTimeout(() => setShowToast(false), 2000);
+        return;
+      }
+
+      if (formData.rememberMe) {
+        localStorage.setItem('loginData', JSON.stringify({ email: formData.email, password: formData.password }));
+      } else {
+        localStorage.removeItem('loginData');
+      }
+
+      setIsError(false);
+      setToastMessage('Login Successful!');
       setShowToast(true);
-      setTimeout(() => setShowToast(false), 2000);
-      return;
-    }
+      setTimeout(() => {
+        setShowToast(false);
+        if (onLoginSuccess) onLoginSuccess();
+      }, 2000);
 
-    if (formData.rememberMe) {
-      localStorage.setItem('loginData', JSON.stringify({ email: formData.email, password: formData.password }));
-    } else {
-      localStorage.removeItem('loginData');
+    } catch (err) {
+      setIsError(true);
+      // Join all errors with a separator to show them all at once
+      setToastMessage(err.inner.map(e => e.message).join(' | '));
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 3000); // Increased time to read multiple errors
     }
-
-    setIsError(false);
-    setToastMessage('Login Successful!');
-    setShowToast(true);
-    setTimeout(() => {
-      setShowToast(false);
-      if (onLoginSuccess) onLoginSuccess();
-    }, 2000);
   };
 
   const handleChange = ({ target: { name, value, type, checked } }) => {
@@ -112,7 +131,7 @@ function LoginPage({ onLoginSuccess, onClose }) {
           Foodie-Frenzy
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-5" noValidate>
 
           {/* Email */}
           <div className="relative">
@@ -124,7 +143,6 @@ function LoginPage({ onLoginSuccess, onClose }) {
               value={formData.email}
               onChange={handleChange}
               className={inputClass}
-              required
             />
           </div>
 
@@ -138,7 +156,6 @@ function LoginPage({ onLoginSuccess, onClose }) {
               value={formData.password}
               onChange={handleChange}
               className={inputClass}
-              required
             />
             <button
               type="button"

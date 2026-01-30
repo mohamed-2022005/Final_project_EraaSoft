@@ -12,7 +12,8 @@ import MyOrderPage from './pages/MyOrderPage/MyOrderPage';
 
 function App() {
   // Check if user is authenticated
-  const token = localStorage.getItem('token') || localStorage.getItem('authToken');
+  const tokealreadyn = !!(localStorage.getItem('token') || localStorage.getItem('authToken'));
+
 
   return (
     <div>
@@ -22,8 +23,8 @@ function App() {
         <Route path='/about' element={<AboutPage />} />
         <Route path='/menu' element={<MenuPage />} />
 
-        {/* Redirect to Home if already logged in */}
-        <Route path='/login' element={token ? <Navigate to="/" /> : <HomePage />} />
+        {/* Redirect to Home if  logged in */}
+        <Route path='/login' element={tokealreadyn ? <Navigate to="/" /> : <HomePage />} />
         <Route path='/signup' element={<SignUpPage />} />
 
         {/* Protected Routes */}
@@ -32,7 +33,7 @@ function App() {
             <CartPage />
           </PrivateRoute>
         } />
-        
+
         {/* Public Checkout Route */}
         <Route path='/checkout' element={<CheckOutPage />} />
 
