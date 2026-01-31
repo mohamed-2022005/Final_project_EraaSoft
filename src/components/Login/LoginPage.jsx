@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import * as Yup from 'yup'; // Import Yup
+import * as Yup from 'yup'; 
 import {
   FaArrowRight,
   FaCheckCircle,
@@ -29,6 +29,7 @@ function LoginPage({ onLoginSuccess, onClose }) {
     email: Yup.string().email('Invalid email format').required('Email is required'),
     password: Yup.string().required('Password is required'),
   });
+
 
   useEffect(() => {
     const stored = localStorage.getItem('loginData');
@@ -80,7 +81,7 @@ function LoginPage({ onLoginSuccess, onClose }) {
       // Join all errors with a separator to show them all at once
       setToastMessage(err.inner.map(e => e.message).join(' | '));
       setShowToast(true);
-      setTimeout(() => setShowToast(false), 3000); // Increased time to read multiple errors
+      setTimeout(() => setShowToast(false), 3000); 
     }
   };
 

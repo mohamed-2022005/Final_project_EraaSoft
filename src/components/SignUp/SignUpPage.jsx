@@ -82,7 +82,6 @@ function SignUpPage() {
     } catch (err) {
       setIsError(true);
       if (err.inner) {
-        // هنا بنجمع كل الرسايل في مصفوفة بدل ما ندمجهم بـ |
         const errors = err.inner.map(e => e.message);
         setToastMessages(errors);
       } else {
@@ -90,7 +89,7 @@ function SignUpPage() {
       }
 
       setShowToast(true);
-      setTimeout(() => setShowToast(false), 3500); // وقت أطول شوية للقراءة
+      setTimeout(() => setShowToast(false), 3500); 
     }
   };
 
@@ -104,7 +103,7 @@ function SignUpPage() {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#1a120b] p-4">
 
       {/* Toast Notification */}
-      <div className={`fixed top-5 right-5 z-[100] transition-all duration-500 transform ${showToast ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'}`}>
+      <div className={`fixed top-5 right-5 z-100 transition-all duration-500 transform ${showToast ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'}`}>
         <div className={`${isError ? 'bg-red-600' : 'bg-green-600'} text-white px-6 py-3 rounded-xl shadow-2xl flex items-start gap-3 max-w-md`}>
           <div className="mt-1">
             {isError ? <FaExclamationCircle className="shrink-0" /> : <FaCheckCircle className="shrink-0" />}
@@ -129,7 +128,7 @@ function SignUpPage() {
           <FaTimes />
         </button>
 
-        <h2 className="text-center text-amber-500 text-2xl font-bold mb-8 italic tracking-wider">
+        <h2 className="text-center text-amber-500 text-2xl font-bold mb-8  tracking-wider">
           Create Account
         </h2>
 
